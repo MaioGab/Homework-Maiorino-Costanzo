@@ -66,10 +66,33 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// altrimenti mi darà FALSO (ROSSO)
 	}
 	
-	// Ora implementiamo il PRIMO TEST di ADD ATTREZZO
+	// Ora implementiamo il PRIMO TEST di HAS ATTREZZO
 	@Test
 	void testHasAttrezzo_Trovato() {
 		this.stanzaConUnaUscita.addAttrezzo(spada);
 		assertTrue(this.stanzaConUnaUscita.hasAttrezzo("Spada"));
+	}
+	
+	// Ora implementiamo il SECONDA TEST di HAS ATTREZZO
+	@Test
+	void testHasAttrezzo_Diverso() {
+		this.stanzaConUnaUscita.addAttrezzo(spada);
+		assertFalse(this.stanzaConUnaUscita.hasAttrezzo("Martello"));
+	}
+
+	
+	@Test
+	void testHasAttrezzo_NumeroMassimoSuperato() {
+	    // Riempio la stanza fino al massimo
+	    for (int i = 0; i < 10; i++) {
+	        this.stanzaConUnaUscita.addAttrezzo(new Attrezzo("Attrezzo" + i, i));
+	    }
+
+	    // Provo ad aggiungere un attrezzo in più
+	    boolean risultato = this.stanzaConUnaUscita.addAttrezzo(new Attrezzo("Extra", 5));
+
+	    // Verifico che NON venga aggiunto
+	    assertFalse(risultato);
+
 	}
 }
