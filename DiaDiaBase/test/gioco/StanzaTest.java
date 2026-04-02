@@ -1,4 +1,4 @@
-package gioco; // SEMPRE IL PACKAGE ALL'INIZIO (SENNO' ESPLODIAMO TUTTI)
+package gioco; // SEMPRE IL PACKAGE ALL'INIZIO
 				// Dichiara che questa classe appartiene a un gruppo chiamato "gioco"
 
 // Queste importazioni invece avvisano Java che utilizzerai strumenti provenienti da
@@ -37,7 +37,7 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// Ora implementiamo il PRIMO TEST
 	@Test
 	// TEST CHE VERIFICA SE IL COLLEGAMENTO CREATO IN SET UP FUNZIONA CORRETTAMENTE
-	void testGetStanzaAdiacente_DirezioneEsistente() {
+	void testImpostaStanzaAdiacente_DirezioneEsistente() {
 		assertEquals(this.stanzaAdiacente, this.stanzaConUnaUscita.getStanzaAdiacente("nord"));
 	// Sta dicendo che il test dà VERO (VERDE) se quando chiedo a StanzaConUnaUscita
 	// che stanza c'è a NORD, devo trovarmi StanzaAdiacente, altrimenti mi darà 
@@ -47,7 +47,7 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// Ora implementiamo il SECONDO TEST
 	@Test
 	// TEST CHE VERIFICA COSA SUCCEDE QUANDO VIENE CHIESTA UNA STANZA INESISTENTE
-	void testGetStanzaAdiacente_DirezioneInesistente() {
+	void testImpostaStanzaAdiacente_DirezioneInesistente() {
 		assertNull(this.stanzaConUnaUscita.getStanzaAdiacente("sud"));
 	// Sta dicendo che il test dà VERO (VERO) se, quando cerco StanzaAdiacente in
 	// una direzione inesistente di stanzaConUnaUscita, il valore risultante è NULL,
@@ -57,7 +57,7 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// Ora implementiamo il TERZO TEST
 	@Test
 	// TEST CHE VERIFICA COSA SUCCEDE LA STANZA ADIACENTE AD UNA STANZA SENZA USCITE
-	void testGetStanzaAdiacente_StanzaIsolata() {
+	void testImpostaStanzaAdiacente_StanzaIsolata() {
 		assertNull(this.stanzaVuota.getStanzaAdiacente("nord"));
 	// Sta dicendo che il test dà VERO (VERDE) se, quando cerco StanzaAdiacente di
 	// una StanzaVuota in una qualsiasi direzione il valore risultante è NULL, 
