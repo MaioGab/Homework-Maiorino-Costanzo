@@ -16,9 +16,10 @@ import org.junit.jupiter.api.Test;
 class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBLIC"
 	
 	// Ora creiamo la struttura principale del test nei metodi richiesti
-	private Stanza stanzaVuota;
+	private Stanza stanzaIsolata;
 	private Stanza stanzaConUnaUscita;
-	private Stanza stanzaAdiacente; 
+	private Stanza stanzaAdiacente;
+	private Attrezzo spada;
 	// Le scriviamo fuori dai metodi test affinchè tutti possano usare queste stanze
 	// Stiamo rappresentando lo scenario di test = FIXTURE
 	
@@ -27,14 +28,15 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 				// modo tutti partiranno dalla stessa identica situazione 
 	void setup() {
 		// Creiamo gli oggetti e li colleghiamo tra loro prima di testarli
-		this.stanzaVuota = new Stanza("Stanza Vuota");
+		this.stanzaIsolata = new Stanza("Stanza Isolata");
 		this.stanzaConUnaUscita = new Stanza("Stanza Base");
 		this.stanzaAdiacente = new Stanza("Stanza Adiacente Nord");
 		// Per la stanza con un'uscita diciamo, al test, la stanza collegata (NORD)
 		this.stanzaConUnaUscita.impostaStanzaAdiacente("nord", this.stanzaAdiacente);
+		this.spada = new Attrezzo("Spada", 10);
 	}
 	
-	// Ora implementiamo il PRIMO TEST
+	// Ora implementiamo il PRIMO TEST di IMPOSTA STANZA
 	@Test
 	// TEST CHE VERIFICA SE IL COLLEGAMENTO CREATO IN SET UP FUNZIONA CORRETTAMENTE
 	void testImpostaStanzaAdiacente_DirezioneEsistente() {
@@ -44,7 +46,7 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// FALSO (ROSSO)
 	}
 	
-	// Ora implementiamo il SECONDO TEST
+	// Ora implementiamo il SECONDO TEST di IMPOSTA STANZA
 	@Test
 	// TEST CHE VERIFICA COSA SUCCEDE QUANDO VIENE CHIESTA UNA STANZA INESISTENTE
 	void testImpostaStanzaAdiacente_DirezioneInesistente() {
@@ -54,15 +56,20 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// altrimenti mi darà FALSO (ROSSO)
 	}
 	
-	// Ora implementiamo il TERZO TEST
+	// Ora implementiamo il TERZO TEST di IMPOSTA STANZA
 	@Test
 	// TEST CHE VERIFICA COSA SUCCEDE LA STANZA ADIACENTE AD UNA STANZA SENZA USCITE
 	void testImpostaStanzaAdiacente_StanzaIsolata() {
-		assertNull(this.stanzaVuota.getStanzaAdiacente("nord"));
+		assertNull(this.stanzaIsolata.getStanzaAdiacente("nord"));
 	// Sta dicendo che il test dà VERO (VERDE) se, quando cerco StanzaAdiacente di
 	// una StanzaVuota in una qualsiasi direzione il valore risultante è NULL, 
 	// altrimenti mi darà FALSO (ROSSO)
 	}
 	
-	
+	// Ora implementiamo il PRIMO TEST di ADD ATTREZZO
+	@Test
+	void testHasAttrezzo_Trovato() {
+		this.stanzaConUnaUscita.addAttrezzo(spada);
+		assertTrue(this.stanzaConUnaUscita.hasAttrezzo("Spada"));
+	}
 }
