@@ -12,17 +12,20 @@ package gioco;
 
 public class Partita {
 
+	static final private int CFU_INIZIALI = 20;
+
 	private Stanza stanzaCorrente;
+	private Labirinto labirinto;
 	private boolean finita;
 	private int cfu;
 	
-
-    //partita non sa più quali sono le stanze iniziali e finali, le deve chiedere a labirinto
-	//scrivere dei getter per il labirinto
-
-	public Stanza getStanzaVincente() {
-		return stanzaVincente;
+	public Partita() {
+		this.labirinto= new Labirinto();
+		this.stanzaCorrente=labirinto.getStanzaIniziale();
+		this.finita= false;
+		this.cfu= CFU_INIZIALI;
 	}
+
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
@@ -37,7 +40,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== this.getStanzaVincente();
+		return this.getStanzaCorrente()== this.labirinto.getStanzaFinale();
 	}
 
 	/**
