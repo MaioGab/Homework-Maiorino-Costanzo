@@ -10,18 +10,16 @@ package gioco;
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
-
 	private Stanza stanzaCorrente;
 	private Labirinto labirinto;
 	private boolean finita;
-	private int cfu;
+	private Giocatore giocatore;
 	
 	public Partita() {
 		this.labirinto= new Labirinto();
 		this.stanzaCorrente=labirinto.getStanzaIniziale();
 		this.finita= false;
-		this.cfu= CFU_INIZIALI;
+		this.giocatore= new Giocatore();
 	}
 
 
@@ -46,7 +44,7 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
+		return finita || vinta() || this.giocatore.getCfu()==0;
 	}
 
 	/**
@@ -57,11 +55,4 @@ public class Partita {
 		this.finita = true;
 	}
 
-	public int getCfu() {
-		return this.cfu;
-	}
-
-	public void setCfu(int cfu) {
-		this.cfu = cfu;		
-	}	
 }
