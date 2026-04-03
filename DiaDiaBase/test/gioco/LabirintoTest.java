@@ -41,14 +41,14 @@ class LabirintoTest {
 	@Test
 	void testGetStanzaFinale_Sbagliato() {
 		assertNotEquals("Biblioteca", labirinto.getStanzaFinale().getNome()); 
-		// Verifico che se metto come stanza iniziale BIBLIOTECA il test mi dà FALSO
+		// Verifico che se metto come stanza finale BIBLIOTECA il test mi dà FALSO
 	}
 	
 	// Implementiamo il SECONDO TEST di GET STANZA INIZIALE
 	@Test
 	void testGetStanzaFinale_Corretto() {
 		assertEquals("Atrio", labirinto.getStanzaFinale().getNome());
-		// Verifico che se metto come stanza iniziale ATRIO il test mi dà VERO
+		// Verifico che se metto come stanza finale ATRIO il test mi dà VERO
 	}
 	
 	// Implementiamo il TERZO TEST di GET STANZA INIZIALE
