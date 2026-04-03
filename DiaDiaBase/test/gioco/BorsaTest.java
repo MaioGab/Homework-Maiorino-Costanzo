@@ -13,20 +13,20 @@ class BorsaTest {
 	}
 	
 	@Test
-	void addAttrezzo_PesoNonMax() {
+	void addAttrezzo_PesoMaxSuperato() {
 		Attrezzo martello= new Attrezzo("martello", 12);
 		assertFalse(this.borsa.addAttrezzo(martello));
 	}
 	
 	
 	@Test
-	void addAttrezzo_NUmeroAttrezziNonMassimo() {
+	void addAttrezzo_NumeroAttrezziNonMassimo() {
 		Attrezzo spada= new Attrezzo("spada", 8);
 		assertTrue(this.borsa.addAttrezzo(spada));
 	}
 	
 	@Test
-	void addAttrezzo_NUmeroAttrezziMassimo() {
+	void addAttrezzo_NumeroAttrezziMassimo() {
 		for (int i = 0; i < 10; i++) {
 	        this.borsa.addAttrezzo(new Attrezzo("Attrezzo" + i, i));
 	    }
