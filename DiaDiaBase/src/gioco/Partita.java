@@ -1,7 +1,5 @@
 package gioco;
 
-//HA TROPPE RESPONSABILITA' E' INDICE DI POCA COESIONE DEL CODICE
-
 /**
  * Questa classe modella una partita del gioco
  *
