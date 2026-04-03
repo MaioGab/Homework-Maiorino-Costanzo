@@ -54,5 +54,14 @@ public class Partita {
 	public void setFinita() {
 		this.finita = true;
 	}
-
+	
+	
+	public Labirinto getLabirinto() {
+	    return this.labirinto;
+	}
+	
+	
+	public Giocatore getGiocatore() {
+	    return this.giocatore;
+	}
 }
