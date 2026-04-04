@@ -1,11 +1,11 @@
 package gioco;
 
-// HA TROPPE RESPONSABILITA' E' INDICE DI POCA COESIONE DEL CODICE
+
 import java.util.Scanner;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
- * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
+ * Per giocare crea un'istanza di questa classe e invoca il metodo gioca
  *
  * Questa e' la classe principale crea e istanzia tutte le altre
  *
@@ -27,7 +27,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
 
@@ -46,7 +46,6 @@ public class DiaDia {
 		while (!processaIstruzione(istruzione));
 	}   
 
-
 	/**
 	 * Processa una istruzione 
 	 *
@@ -62,6 +61,10 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -87,16 +90,18 @@ public class DiaDia {
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
 	private void vai(String direzione) {
-		if(direzione==null)
-			System.out.println("Dove vuoi andare ?");
-		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		if(direzione==null) {
+			System.out.println("Dove vuoi andare ?  (inserire il comando vai e la direzione desiderata)");
+			System.out.println(partita.getStanzaCorrente().getDescrizione());
+			return; 
+			}
+		Stanza prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu - 1);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu-1);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
@@ -107,6 +112,62 @@ public class DiaDia {
 	private void fine() {
 		System.out.println("Grazie di aver giocato!");  // si desidera smettere
 	}
+	
+	
+	/**
+	 * Comando "Prendi".
+	 */
+	private void prendi(String nomeAttrezzo) {
+		if(nomeAttrezzo==null) {
+			 System.out.println("Cosa vuoi prendere\n");
+		     return;
+		     }
+		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
+	    Attrezzo attrezzo = stanzaCorrente.getAttrezzo(nomeAttrezzo);
+	    
+	    if(attrezzo==null) {
+	    	System.out.println("Attrezzo non presente nella stanza\n");
+	    	return;
+	    }
+	    
+	    boolean aggiunto=this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo);
+	    
+	    if(aggiunto) {
+	    	stanzaCorrente.removeAttrezzo(attrezzo);
+	    	System.out.println("Hai preso: " + attrezzo);
+	    }
+	    else {
+	    	System.out.println("Borsa piena!\n");
+	    }
+	}
+	
+	
+	/**
+	 * Comando "Posa".
+	 */
+	private void posa(String nomeAttrezzo) {
+		if(nomeAttrezzo==null) {
+			 System.out.println("Cosa vuoi prendere?");
+		     return;
+		     }
+		Borsa borsa = this.partita.getGiocatore().getBorsa();
+	    Attrezzo attrezzo = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+	    
+	    if(attrezzo==null) {
+	    	System.out.println("Non hai questo attrezzo\n");
+	    	return;
+	    }
+	    
+	    boolean aggiunto = this.partita.getStanzaCorrente().addAttrezzo(attrezzo);
+
+	    if (aggiunto) {
+	        borsa.removeAttrezzo(nomeAttrezzo);
+	        System.out.println("Hai posato: " + attrezzo);
+	    } else {
+	        System.out.println("La stanza è piena!");
+	    }
+	}
+	
 
 	public static void main(String[] argc) {
 		DiaDia gioco = new DiaDia();

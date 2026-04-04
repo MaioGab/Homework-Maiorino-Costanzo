@@ -121,14 +121,28 @@ public class Stanza {
 	*/
     public String toString() {
     	StringBuilder risultato = new StringBuilder();
+    	risultato.append("Ti trovi nella stanza: ");
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
     	for (String direzione : this.direzioni)
     		if (direzione!=null)
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
+    	boolean vuota = true;
     	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
+    	    if (attrezzo != null) {
+    	        vuota = false;
+    	        break;
+    	    }
+    	}
+
+    	if (vuota) {
+    	    risultato.append("Nessun attrezzo presente nella stanza\n");
+    	} else {
+    	    for (Attrezzo attrezzo : this.attrezzi) {
+    	        if (attrezzo != null)
+    	            risultato.append(" ").append(attrezzo);
+    	    }
     	}
     	return risultato.toString();
     }
@@ -157,7 +171,7 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo!=null && attrezzo.getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;	
