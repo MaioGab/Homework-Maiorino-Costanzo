@@ -143,6 +143,7 @@ public class Stanza {
     	        if (attrezzo != null)
     	            risultato.append(" ").append(attrezzo);
     	    }
+    	    risultato.append("\n");
     	}
     	return risultato.toString();
     }

@@ -70,7 +70,7 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("posa"))
 			this.posa(comandoDaEseguire.getParametro());
 		else
-			this.io.mostraMessaggio("Comando sconosciuto");
+			this.io.mostraMessaggio("Comando sconosciuto\n");
 		if (this.partita.vinta()) {
 			this.io.mostraMessaggio("Hai vinto!");
 			return true;
@@ -85,10 +85,9 @@ public class DiaDia {
 	 */
 	private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
-			this.io.mostraMessaggio(elencoComandi[i]+ " ");
+			this.io.mostraMessaggio(elencoComandi[i] +" ");
 		this.io.mostraMessaggio("\n");
 	}
-
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
@@ -123,7 +122,7 @@ public class DiaDia {
 	 */
 	private void prendi(String nomeAttrezzo) {
 		if(nomeAttrezzo==null) {
-			this.io.mostraMessaggio("Cosa vuoi prendere\n");
+			this.io.mostraMessaggio("Cosa vuoi prendere?\n");
 		     return;
 		     }
 		Stanza stanzaCorrente = this.partita.getStanzaCorrente();
