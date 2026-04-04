@@ -30,8 +30,6 @@ public class Comando {
 		// seconda parola: eventuale parametro
 		if (scannerDiParole.hasNext())
 			this.parametro = scannerDiParole.next();
-		
-		scannerDiParole.close(); // Così sono sicuro di non provocare alcun leak dopo l'apertura
 
     }
 
