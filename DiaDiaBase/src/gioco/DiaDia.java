@@ -44,6 +44,8 @@ public class DiaDia {
 		do		
 			istruzione = scannerDiLinee.nextLine();
 		while (!processaIstruzione(istruzione));
+		
+		scannerDiLinee.close(); // Così sono sicuro di non provocare alcun leak dopo l'apertura
 	}   
 
 	/**
