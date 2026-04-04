@@ -2,6 +2,10 @@ package gioco;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Borsa;
+
 import org.junit.jupiter.api.BeforeEach;
 class BorsaTest {
 

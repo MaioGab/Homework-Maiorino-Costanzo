@@ -1,4 +1,4 @@
-package gioco;
+package it.uniroma3.diadia.generale;
 
 
 import java.util.Scanner;
@@ -30,6 +30,9 @@ public class Comando {
 		// seconda parola: eventuale parametro
 		if (scannerDiParole.hasNext())
 			this.parametro = scannerDiParole.next();
+		
+		scannerDiParole.close(); // Così sono sicuro di non provocare alcun leak dopo l'apertura
+
     }
 
     public String getNome() {

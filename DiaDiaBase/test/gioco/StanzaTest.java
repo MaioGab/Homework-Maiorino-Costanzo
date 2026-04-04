@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 // Queste ultime due servono per le annotazioni che 
 // spiegano a JUnit 5 come comportarsi
 
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 
 class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBLIC"
 	
