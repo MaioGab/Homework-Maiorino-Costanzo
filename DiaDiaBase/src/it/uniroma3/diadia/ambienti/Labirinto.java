@@ -12,7 +12,6 @@ public class Labirinto {
 		creaStanze();
 	}
 	
-	
 	private void creaStanze() {
 
 		/* crea gli attrezzi */

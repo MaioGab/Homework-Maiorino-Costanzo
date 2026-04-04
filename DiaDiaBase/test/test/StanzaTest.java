@@ -39,6 +39,8 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 		this.spada = new Attrezzo("Spada", 10);
 	}
 	
+		// INIZIO TEST PER IMPOSTA STANZA 
+	
 	// Ora implementiamo il PRIMO TEST di IMPOSTA STANZA
 	@Test
 	// TEST CHE VERIFICA SE IL COLLEGAMENTO CREATO IN SET UP FUNZIONA CORRETTAMENTE
@@ -69,6 +71,8 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	// altrimenti mi darà FALSO (ROSSO)
 	}
 	
+		// INIZIO TEST PER HAS ATTREZZO
+	
 	// Ora implementiamo il PRIMO TEST di HAS ATTREZZO
 	@Test
 	void testHasAttrezzo_Trovato() {
@@ -76,14 +80,14 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 		assertTrue(this.stanzaConUnaUscita.hasAttrezzo("Spada"));
 	}
 	
-	// Ora implementiamo il SECONDA TEST di HAS ATTREZZO
+	// Ora implementiamo il SECONDO TEST di HAS ATTREZZO
 	@Test
 	void testHasAttrezzo_Diverso() {
 		this.stanzaConUnaUscita.addAttrezzo(spada);
 		assertFalse(this.stanzaConUnaUscita.hasAttrezzo("Martello"));
 	}
 
-	
+	// Ora implementiamo il TERZO TEST di HAS ATTREZZO
 	@Test
 	void testHasAttrezzo_NumeroMassimoSuperato() {
 	    // Riempio la stanza fino al massimo
@@ -98,4 +102,49 @@ class StanzaTest { // In JUnit 5 la classe non deve essere necessariamente "PUBL
 	    assertFalse(risultato);
 
 	}
+		// INIZIO TEST PER REMOVE ATTREZZO
+	
+	// Ora implementiamo il PRIMO TEST di REMOVE ATTREZZO
+	@Test
+	void testRemoveAttrezzo_Rimosso() {
+		// Aggiungo alla stanza un attrezzo
+		this.stanzaConUnaUscita.addAttrezzo(spada);
+		// Rimuovo l'oggetto dalla stanza e verifico di averlo eliminato
+		assertTrue(this.stanzaConUnaUscita.removeAttrezzo(spada)); // DEVE DARMI TRUE SE LO HA FATTO
+		// Controllo se l'oggetto esiste ancora nella stanza
+		assertFalse(this.stanzaConUnaUscita.hasAttrezzo("Spada")); // DEVE DARMI FALSE SE LO HA FATTO
+	}
+	
+	// Ora implementiamo il SECONDO TEST di REMOVE ATTREZZO
+	@Test
+	void testRemoveAttrezzo_RimozioneImpossibile() {
+		// Creiamo un oggetto senza inserirlo in nessuna stanza
+		Attrezzo ascia = new Attrezzo("Ascia", 7);
+		// Per far girare meglio il codice inserisco SPADA nella stanza che si vuole testare
+		// Questo attrezzo non sarà mai richiesto dal test REMOVE ATTREZZO
+		this.stanzaConUnaUscita.addAttrezzo(spada);
+		// Verifico che il test mi dia falso se provo a eliminare l'oggetto ascia non presente nella stanza
+		assertFalse(this.stanzaConUnaUscita.removeAttrezzo(ascia));
+	}
+	
+	// Ora implementiamo il TERZO TEST di REMOVE ATTREZZO
+	@Test
+	void testRemoveAttrezzo_MantieneGliAltriAttrezzi() {
+		// Creiamo 3 attrezzi  
+		Attrezzo attrezzo1 = new Attrezzo("Attrezzo1", 5);
+		Attrezzo attrezzo2 = new Attrezzo("Attrezzo2", 5);
+		Attrezzo attrezzo3 = new Attrezzo("Attrezzo3", 5);
+		// Inseriamoli nella stanza
+		this.stanzaConUnaUscita.addAttrezzo(attrezzo1);
+		this.stanzaConUnaUscita.addAttrezzo(attrezzo2);
+		this.stanzaConUnaUscita.addAttrezzo(attrezzo3);
+		// Eliminiamo il secondo
+		this.stanzaConUnaUscita.removeAttrezzo(attrezzo2);
+		// Controlliamo che gli altri 2 attrezzi ci siano senza problemi interni
+		assertTrue(this.stanzaConUnaUscita.hasAttrezzo("Attrezzo1"));
+		assertTrue(this.stanzaConUnaUscita.hasAttrezzo("Attrezzo3"));
+		// Controlliamo che il secondo invece sia stato effettivamente rimosso
+		assertFalse(this.stanzaConUnaUscita.hasAttrezzo("Attrezzo2"));
+	}
+	 
 }
