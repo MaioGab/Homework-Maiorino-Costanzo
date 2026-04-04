@@ -1,8 +1,5 @@
 package it.uniroma3.diadia.generale;
 
-
-import java.util.Scanner;
-
 /**
  * Questa classe modella un comando.
  * Un comando consiste al piu' di due parole:
@@ -19,17 +16,16 @@ public class Comando {
 
     private String nome;
     private String parametro;
+    private IOConsole io;
 
     public Comando(String istruzione) {
-		Scanner scannerDiParole = new Scanner(istruzione);
 
 		// prima parola: nome del comando
-		if (scannerDiParole.hasNext())
-			this.nome = scannerDiParole.next(); 
+		
+			this.nome = this.io.leggiRiga(); 
 
 		// seconda parola: eventuale parametro
-		if (scannerDiParole.hasNext())
-			this.parametro = scannerDiParole.next();
+			this.parametro = this.io.leggiRiga();
 
     }
 
