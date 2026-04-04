@@ -1,4 +1,4 @@
-package gioco; // SEMPRE IL PACKAGE ALL'INIZIO
+package test; // SEMPRE IL PACKAGE ALL'INIZIO
 				// Dichiara che questa classe appartiene a un gruppo chiamato "gioco"
 
 // Queste importazioni invece avvisano Java che utilizzerai strumenti provenienti da
