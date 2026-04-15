@@ -1,4 +1,4 @@
-package Comandi;
+package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
 
