@@ -3,6 +3,7 @@ package it.uniroma3.diadia.generale;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 /**
@@ -56,27 +57,19 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
+		Comando comandoDaEseguire;
+		FabbricaDiComandi factory = new FabbricaDiComandi()
+		comandoDaEseguire = factory.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.vinta())
 
-		if (comandoDaEseguire.getNome().equals("fine")) {
-			this.fine(); 
-			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("aiuto"))
-			this.aiuto();
-		else if (comandoDaEseguire.getNome().equals("prendi"))
-			this.prendi(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("posa"))
-			this.posa(comandoDaEseguire.getParametro());
-		else
-			this.io.mostraMessaggio("Comando sconosciuto\n");
-		if (this.partita.vinta()) {
-			this.io.mostraMessaggio("Hai vinto!");
-			return true;
-		} else
-			return false;
-	}   
+		System.out.println("Hai vinto!");
+		if (!this.partita.giocatoreIsVivo())
+
+		System.out.println("Hai esaurito i CFU...");
+
+		return this.partita.isFinita();
+		}
 
 	// implementazioni dei comandi dell'utente:
 
@@ -88,27 +81,7 @@ public class DiaDia {
 			this.io.mostraMessaggio(elencoComandi[i] +" ");
 		this.io.mostraMessaggio("\n");
 	}
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-	 */
-	private void vai(String direzione) {
-		if(direzione==null) {
-			this.io.mostraMessaggio("Dove vuoi andare ?  (inserire il comando vai e la direzione desiderata)\n");
-			this.io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
-			return; 
-			}
-		Stanza prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
-		if (prossimaStanza == null)
-			this.io.mostraMessaggio("Direzione inesistente\n");
-		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getGiocatore().getCfu();
-			this.partita.getGiocatore().setCfu(cfu-1);
-		}
-		this.io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
-	}
-
+	
 	/**
 	 * Comando "Fine".
 	 */
