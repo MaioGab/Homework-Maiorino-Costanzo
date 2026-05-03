@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import it.uniroma3.diadia.generale.IOConsole;
 
-public class FabbricaDiComandiFisarmonica {
+public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 	private IOConsole io;
 	
 	public FabbricaDiComandiFisarmonica(IOConsole io) {
