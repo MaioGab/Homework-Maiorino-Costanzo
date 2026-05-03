@@ -1,10 +1,12 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.generale.Partita;
+import it.uniroma3.diadia.generale.IOConsole;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPrendi implements Comando{
 	private String nomeAttrezzo;
+	private IOConsole io;
 	
 	public ComandoPrendi(String nomeAttrezzo) {
 		   this.nomeAttrezzo = nomeAttrezzo;
@@ -13,14 +15,14 @@ public class ComandoPrendi implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		if(nomeAttrezzo==null) {
-			System.out.println("Cosa vuoi prendere?\n");
+			io.mostraMessaggio("Cosa vuoi prendere?\n");
 		     return;
 		     }
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 	    Attrezzo attrezzo = stanzaCorrente.getAttrezzo(nomeAttrezzo);
 	    
 	    if(attrezzo==null) {
-	    	System.out.println("Attrezzo non presente nella stanza\n");
+	    	io.mostraMessaggio("Attrezzo non presente nella stanza\n");
 	    	return;
 	    }
 	    
@@ -28,15 +30,22 @@ public class ComandoPrendi implements Comando{
 	    
 	    if(aggiunto) {
 	    	stanzaCorrente.removeAttrezzo(attrezzo);
-	    	System.out.println("Hai preso: " + attrezzo + "\n");
+	    	io.mostraMessaggio("Hai preso: " + attrezzo + "\n");
 	    }
 	    else {
-	    	System.out.println("Borsa piena!\n");
+	    	io.mostraMessaggio("Borsa piena!\n");
 	    }
 	}
+	
 	
 	@Override
 	public void setParametro(String parametro) {
 	    this.nomeAttrezzo=parametro;
+	}
+	
+	
+	@Override
+	public void setIo(IOConsole io) {
+	       this.io = io;
 	}
 }

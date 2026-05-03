@@ -1,19 +1,24 @@
 package it.uniroma3.diadia.comandi;
+import it.uniroma3.diadia.generale.IOConsole;
 import it.uniroma3.diadia.generale.Partita;
 
 public class ComandoGuarda implements Comando{
+	private IOConsole io;
 	
 	@Override
 	public void esegui(Partita partita) {
-		partita.getStanzaCorrente().getDescrizione();
-		if(partita.isFinita())
-			System.out.println("Partita in corso");
-		else
-			System.out.println("Partita terminata");
+		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+		io.mostraMessaggio("Hai ancora: "+partita.getGiocatore().getCfu()+ "CFU");
+		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 	}
 	
 	@Override
 	public void setParametro(String parametro) {
 	    // non serve per questo comando
+	}
+	
+	@Override
+	public void setIo(IOConsole io) {
+	    this.io = io;
 	}
 }
