@@ -1,6 +1,6 @@
 package it.uniroma3.diadia.comandi;
 
-import it.uniroma3.diadia.generale.IOConsole;
+import it.uniroma3.diadia.generale.IO;
 import it.uniroma3.diadia.generale.Partita;
 
 /**
@@ -21,7 +21,7 @@ public interface Comando {
 
    public void setParametro(String parametro);
 
-   public void setIo(IOConsole io); 
+   public void setIo(IO io); 
    
    public String getNome();
    

@@ -2,12 +2,14 @@ package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
 
-import it.uniroma3.diadia.generale.IOConsole;
+import it.uniroma3.diadia.generale.IO;
+
+
 
 public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
-	private IOConsole io;
+	private IO io;
 	
-	public FabbricaDiComandiFisarmonica(IOConsole io) {
+	public FabbricaDiComandiFisarmonica(IO io) {
 		this.io = io;
 	}
 	

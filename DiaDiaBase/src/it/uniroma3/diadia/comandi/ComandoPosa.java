@@ -1,12 +1,12 @@
 package it.uniroma3.diadia.comandi;
-import it.uniroma3.diadia.generale.IOConsole;
+import it.uniroma3.diadia.generale.IO;
 import it.uniroma3.diadia.generale.Partita;
 import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class ComandoPosa implements Comando{
 	private String nomeAttrezzo;
-	private IOConsole io;
+	private IO io;
 	private final static String nome = "posa";
 	
 	public ComandoPosa() {
@@ -19,7 +19,7 @@ public class ComandoPosa implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		if(nomeAttrezzo==null) {
-			io.mostraMessaggio(nomeAttrezzo);
+			io.mostraMessaggio("Cosa vuoi prendere\n");
 		     return;
 		     }
 		Borsa borsa = partita.getGiocatore().getBorsa();
@@ -51,7 +51,7 @@ public class ComandoPosa implements Comando{
 	}
 
 	@Override
-	public void setIo(IOConsole io) {
+	public void setIo(IO io) {
 		this.io = io;
 		
 	}

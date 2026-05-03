@@ -19,7 +19,7 @@ public class Stanza {
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
 	private String nome;
-	// COSA[]: SONO DEGLI ARRAY
+	
     private Attrezzo[] attrezzi;
     private int numeroAttrezzi;
     

@@ -50,6 +50,13 @@ public class Partita {
 	public boolean isFinita() {
 		return finita || vinta() || this.giocatore.getCfu()==0;
 	}
+	
+	
+	public boolean giocatoreIsVivo() {
+		if(this.giocatore.getCfu()==0)
+			return false;
+		return true;
+	}
 
 	/**
 	 * Imposta la partita come finita

@@ -1,11 +1,11 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.generale.Partita;
-import it.uniroma3.diadia.generale.IOConsole;
+import it.uniroma3.diadia.generale.IO;
 
 public class ComandoVai implements Comando {
    private String direzione;
-   private IOConsole io;
+   private IO io;
    private final static String nome = "vai";
    
    public ComandoVai() {
@@ -53,7 +53,7 @@ public class ComandoVai implements Comando {
 	}
 
 	@Override
-	public void setIo(IOConsole io) {
+	public void setIo(IO io) {
 		this.io = io;
 		
 	}
