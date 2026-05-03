@@ -6,6 +6,7 @@ import it.uniroma3.diadia.generale.IOConsole;
 public class ComandoVai implements Comando {
    private String direzione;
    private IOConsole io;
+   private final static String nome = "vai";
    
    public ComandoVai() {
    }
@@ -47,7 +48,18 @@ public class ComandoVai implements Comando {
    }
    
    @Override
-   public void setIo(IOConsole io) {
-       this.io = io;
-   }
+	public String getParametro() {
+		return this.direzione;
+	}
+
+	@Override
+	public void setIo(IOConsole io) {
+		this.io = io;
+		
+	}
+	
+	@Override
+	public String getNome() {
+		return nome;
+	}
 }

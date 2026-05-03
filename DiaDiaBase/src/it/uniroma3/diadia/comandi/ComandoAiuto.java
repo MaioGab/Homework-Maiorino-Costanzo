@@ -4,6 +4,7 @@ import it.uniroma3.diadia.generale.Partita;
 
 
 public class ComandoAiuto implements Comando{
+	private final static String nome = "aiuto";
 	
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa", "guarda"};
 	private IOConsole io;
@@ -22,7 +23,17 @@ public class ComandoAiuto implements Comando{
 	}
 	
 	@Override
+	public String getParametro() {
+		return null;  // non ci sono parametri
+	}
+
+	@Override
 	public void setIo(IOConsole io) {
-	    this.io = io;
+		this.io = io;
+	}
+
+	@Override
+	public String getNome() {
+		return nome;
 	}
 }

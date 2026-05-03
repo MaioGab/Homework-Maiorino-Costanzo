@@ -4,6 +4,7 @@ import it.uniroma3.diadia.generale.Partita;
 
 public class ComandoGuarda implements Comando{
 	private IOConsole io;
+	private final static String nome = "guarda";
 	
 	@Override
 	public void esegui(Partita partita) {
@@ -18,7 +19,17 @@ public class ComandoGuarda implements Comando{
 	}
 	
 	@Override
+	public String getParametro() {
+		return null;  // non ci sono parametri
+	}
+
+	@Override
 	public void setIo(IOConsole io) {
-	    this.io = io;
+		this.io = io;
+	}
+
+	@Override
+	public String getNome() {
+		return nome;
 	}
 }

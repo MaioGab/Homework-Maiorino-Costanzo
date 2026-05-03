@@ -7,6 +7,10 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class ComandoPrendi implements Comando{
 	private String nomeAttrezzo;
 	private IOConsole io;
+	private final static String nome = "prendi";
+	
+	public ComandoPrendi() {
+	   }
 	
 	public ComandoPrendi(String nomeAttrezzo) {
 		   this.nomeAttrezzo = nomeAttrezzo;
@@ -45,7 +49,18 @@ public class ComandoPrendi implements Comando{
 	
 	
 	@Override
+	public String getParametro() {
+		return this.nomeAttrezzo;
+	}
+
+	@Override
 	public void setIo(IOConsole io) {
-	       this.io = io;
+		this.io = io;
+		
+	}
+	
+	@Override
+	public String getNome() {
+		return nome;
 	}
 }
