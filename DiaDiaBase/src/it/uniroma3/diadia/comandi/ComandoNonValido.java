@@ -8,7 +8,7 @@ public class ComandoNonValido implements Comando {
 
     @Override
     public void esegui(Partita partita) {
-    	io.mostraMessaggio("Comando non valido!");
+    	io.mostraMessaggio("Comando non valido!\n");
     }
 
     @Override
