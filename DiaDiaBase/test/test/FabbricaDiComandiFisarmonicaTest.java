@@ -18,20 +18,22 @@ public class FabbricaDiComandiFisarmonicaTest {
         fabbrica = new FabbricaDiComandiFisarmonica(new IOConsole());
     }
 
-    // comando valido semplice
+    // comando "vai" riconosciuto correttamente
     @Test
-    public void testComandoVaiRiconosciuto() {
+    public void testComandoVaiNome() {
         Comando comando = fabbrica.costruisciComando("vai");
 
-        assertNotNull(comando);
+        assertEquals("vai", comando.getNome());
+        assertNull(comando.getParametro());
     }
 
-    // comando valido con parametro
+    // comando con parametro
     @Test
-    public void testComandoConParametro() {
+    public void testComandoVaiConParametro() {
         Comando comando = fabbrica.costruisciComando("vai nord");
 
-        assertNotNull(comando);
+        assertEquals("vai", comando.getNome());
+        assertEquals("nord", comando.getParametro());
     }
 
     // comando non valido
@@ -39,6 +41,7 @@ public class FabbricaDiComandiFisarmonicaTest {
     public void testComandoNonValido() {
         Comando comando = fabbrica.costruisciComando("vola");
 
-        assertNotNull(comando);
+        assertEquals("non valido", comando.getNome());
+        assertNull(comando.getParametro());
     }
 }
