@@ -5,7 +5,6 @@ import java.util.Scanner;
 import it.uniroma3.diadia.generale.IOConsole;
 
 public class FabbricaDiComandiFisarmonica {
-
 	private IOConsole io;
 	
 	public FabbricaDiComandiFisarmonica(IOConsole io) {
