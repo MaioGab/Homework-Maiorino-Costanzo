@@ -1,5 +1,6 @@
 package test;
 import it.uniroma3.diadia.ambienti.StanzaBuia;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 import static org.junit.jupiter.api.Assertions.*;
