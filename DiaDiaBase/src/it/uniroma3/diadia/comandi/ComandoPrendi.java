@@ -19,7 +19,7 @@ public class ComandoPrendi implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		if(nomeAttrezzo==null) {
-			io.mostraMessaggio("Cosa vuoi prendere?\n");
+			io.mostraMessaggio("Cosa vuoi prendere? (scrivi comando e nome attrezzo)\n");
 		     return;
 		     }
 		Stanza stanzaCorrente = partita.getStanzaCorrente();

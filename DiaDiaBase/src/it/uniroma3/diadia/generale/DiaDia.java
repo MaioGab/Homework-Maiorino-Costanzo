@@ -61,7 +61,6 @@ public class DiaDia {
 		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(io);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
-		
 		if (this.partita.vinta())
 			this.io.mostraMessaggio("Hai vinto!");
 		if (!this.partita.giocatoreIsVivo())

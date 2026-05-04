@@ -19,7 +19,7 @@ public class ComandoPosa implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		if(nomeAttrezzo==null) {
-			io.mostraMessaggio("Cosa vuoi prendere\n");
+			io.mostraMessaggio("Cosa vuoi posare? (scrivi comando e nome attrezzo)\n");
 		     return;
 		     }
 		Borsa borsa = partita.getGiocatore().getBorsa();
