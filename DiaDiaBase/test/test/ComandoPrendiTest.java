@@ -4,6 +4,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.ComandoPrendi;
 import it.uniroma3.diadia.generale.IOConsole;
+import it.uniroma3.diadia.generale.IO;
+
 import it.uniroma3.diadia.generale.Partita;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +17,7 @@ public class ComandoPrendiTest {
 	private Attrezzo attrezzo;
 	private Comando prendi;
 	private Partita p;
+	private IO io;
 
 	
 	@BeforeEach
@@ -22,7 +25,8 @@ public class ComandoPrendiTest {
 		prendi = new ComandoPrendi("torcia");
 		p = new Partita();
 		attrezzo = new Attrezzo("torcia", 1);
-		prendi.setIo(new IOConsole());
+		io= new IOConsole();
+		prendi.setIo(io);
 	}
 
 
