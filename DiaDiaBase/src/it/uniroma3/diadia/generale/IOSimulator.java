@@ -26,7 +26,7 @@ public class IOSimulator implements IO{
 	@Override
 	public void mostraMessaggio(String msg) {
 		if(indiceOutput< output.length)
-			output[indiceOutput]=msg;
+			output[indiceOutput++]=msg;
 	}
 	
 	public String[] getOutput() {
